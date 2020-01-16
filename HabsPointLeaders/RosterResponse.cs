@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace HabsPointLeaders
 {
-    class Person
+    struct Person
     {
         [JsonProperty("id")] public int Id { get; set; }
 
@@ -11,7 +11,7 @@ namespace HabsPointLeaders
         [JsonProperty("link")] public string Link { get; set; }
     }
 
-    class Position
+    struct Position
     {
         [JsonProperty("code")] public string Code { get; set; }
 
@@ -22,7 +22,7 @@ namespace HabsPointLeaders
         [JsonProperty("abbreviation")] public string Abbreviation { get; set; }
     }
 
-    class RosterPlayer
+    struct RosterPlayer
     {
         [JsonProperty("person")] public Person Person { get; set; }
 
@@ -31,7 +31,7 @@ namespace HabsPointLeaders
         [JsonProperty("position")] public Position Position { get; set; }
     }
 
-    class RosterResponse
+    struct RosterResponse
     {
         [JsonProperty("roster")] public RosterPlayer[] RosterPlayers { get; set; }
 

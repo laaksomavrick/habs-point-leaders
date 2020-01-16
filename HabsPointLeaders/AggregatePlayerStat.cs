@@ -1,6 +1,6 @@
 namespace HabsPointLeaders
 {
-    class AggregatePlayerStat
+    struct AggregatePlayerStat
     {
         public Person Person { get; set; }
 

@@ -13,10 +13,10 @@ namespace HabsPointLeaders
         {
             Console.WriteLine("Habs point leaders is processing...");
 
-            List<AggregatePlayerStat> playerStats = new List<AggregatePlayerStat>();
-
+            var playerStats = new List<AggregatePlayerStat>();
             var statProcessor = new StatProcessor();
             var apiClient = ApiClient.Build();
+            
             var rosterPlayers = await apiClient.GetHabsRoster();
 
             foreach (var rosterPlayer in rosterPlayers)
@@ -39,6 +39,7 @@ namespace HabsPointLeaders
                 };
 
                 playerStats.Add(aggregate);
+                
                 // Rate limit
                 await Task.Delay(100);
             }

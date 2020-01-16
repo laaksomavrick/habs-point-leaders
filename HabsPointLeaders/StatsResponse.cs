@@ -2,22 +2,22 @@ using Newtonsoft.Json;
 
 namespace HabsPointLeaders
 {
-    public class StatsResponse
+    struct StatsResponse
     {
         [JsonProperty("stats")] public Stats[] Stats { get; set; }
     }
 
-    public class Stats
+    struct Stats
     {
         [JsonProperty("splits")] public Splits[] Splits { get; set; }
     }
 
-    public class Splits
+    struct Splits
     {
         [JsonProperty("stat")] public Stat Stat { get; set; }
     }
 
-    public class Stat
+    struct Stat
     {
         [JsonProperty("goals")] public int Goals { get; set; }
 

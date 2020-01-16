@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HabsPointLeaders
 {
@@ -6,62 +7,20 @@ namespace HabsPointLeaders
     {
         public AggregatePlayerStat ProcessMostGoals(List<AggregatePlayerStat> aggregatePlayerStats)
         {
-            AggregatePlayerStat mostGoals = null;
-
-            foreach (var playerStat in aggregatePlayerStats)
-            {
-                if (mostGoals == null)
-                {
-                    mostGoals = playerStat;
-                }
-
-                if (playerStat.Stat.Goals > mostGoals.Stat.Goals)
-                {
-                    mostGoals = playerStat;
-                }
-            }
-
-            return mostGoals;
+            return aggregatePlayerStats.Aggregate(new AggregatePlayerStat(),
+                (acc, curr) => acc.Stat.Goals > curr.Stat.Goals ? acc : curr);
         }
 
         public AggregatePlayerStat ProcessMostAssists(List<AggregatePlayerStat> aggregatePlayerStats)
         {
-            AggregatePlayerStat mostAssists = null;
-
-            foreach (var playerStat in aggregatePlayerStats)
-            {
-                if (mostAssists == null)
-                {
-                    mostAssists = playerStat;
-                }
-
-                if (playerStat.Stat.Assists > mostAssists.Stat.Assists)
-                {
-                    mostAssists = playerStat;
-                }
-            }
-
-            return mostAssists;
+            return aggregatePlayerStats.Aggregate(new AggregatePlayerStat(),
+                (acc, curr) => acc.Stat.Assists > curr.Stat.Assists ? acc : curr);
         }
 
         public AggregatePlayerStat ProcessMostPoints(List<AggregatePlayerStat> aggregatePlayerStats)
         {
-            AggregatePlayerStat mostPoints = null;
-
-            foreach (var playerStat in aggregatePlayerStats)
-            {
-                if (mostPoints == null)
-                {
-                    mostPoints = playerStat;
-                }
-
-                if (playerStat.Stat.Points > mostPoints.Stat.Points)
-                {
-                    mostPoints = playerStat;
-                }
-            }
-
-            return mostPoints;
+            return aggregatePlayerStats.Aggregate(new AggregatePlayerStat(),
+                (acc, curr) => acc.Stat.Points > curr.Stat.Points ? acc : curr);
         }
     }
 }
